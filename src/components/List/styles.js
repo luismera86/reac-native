@@ -38,5 +38,16 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         marginTop: 40,
+    },
+    waring: {
+        fontSize: 60,
+        fontWeight: '900',
+        color: colors.primary
+        
+    },
+    quest: {
+        fontSize: 20,
+        fontWeight: '700',
+        textAlign: 'center'
     }
 })

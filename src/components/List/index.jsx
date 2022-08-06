@@ -1,6 +1,7 @@
 import { Button, FlatList, Modal, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 
+import colors from '../../constants/colors'
 import { styles } from './styles'
 
 const List = ({ itemList, setItemList }) => {
@@ -34,11 +35,12 @@ const List = ({ itemList, setItemList }) => {
 			<FlatList data={itemList} renderItem={renderItem} keyExtractor={(item) => item.id} />
 			<Modal animationType='slide' visible={modalVisibility}>
         <View style={styles.modalContainer}>
-          <Text>¿Estas seguro que deseas eliminar?</Text>
-          <Text>{itemSelected.item}</Text>
+          <Text style={styles.waring}>!</Text>
+          <Text style={styles.quest}>¿Estas seguro que deseas eliminar la tarea?</Text>
+          <Text style={styles.quest}>{itemSelected.item}</Text>
           <View style={styles.modalButtons}>
-            <Button title='ACEPTAR' onPress={() => onHandledDelete(itemSelected.id) }/>
-            <Button title='CANCELAR' onPress={() => setModalVisibility(!modalVisibility)}/>
+            <Button title='ACEPTAR' color={colors.background} onPress={() => onHandledDelete(itemSelected.id) }/>
+            <Button title='CANCELAR' color={colors.background} onPress={() => setModalVisibility(!modalVisibility)}/>
 
           </View>
         </View>
