@@ -4,7 +4,7 @@ import colors from '../../constants/colors'
 export const styles = StyleSheet.create({
 	title: {
         alignSelf: 'center',
-		color: colors.primary,
+		color: colors.secondary,
 		fontSize: 25,
 		fontWeight: '900',
 		marginTop: 30,
