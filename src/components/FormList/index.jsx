@@ -5,6 +5,13 @@ import colors from '../../constants/colors'
 import { styles } from './styles'
 import { useState } from 'react'
 
+const generarId = () => {
+	const random = Math.random().toString(36).substr(2)
+	const fecha = Date.now().toString(36)
+
+	return random + fecha
+}
+
 const FormList = () => {
 	const [item, setItem] = useState('')
 	const [itemList, setItemList] = useState([])
@@ -14,9 +21,17 @@ const FormList = () => {
 	}
 
 	const addItem = () => {
-		setItemList([...itemList, item])
+		if (item.length > 0) {
+			setItemList([
+				...itemList,
+				{
+					id: generarId(),
+					item,
+				},
+			])
 
-		setItem('')
+			setItem('')
+		}
 	}
 
 	return (
@@ -29,9 +44,9 @@ const FormList = () => {
 				onChangeText={onChangeText}
 			/>
 			<View>
-				<Button title='AGREGAR' color={colors.background} onPress={addItem} />
+				<Button title='AGREGAR' color={colors.background} onPress={addItem} touchSoundDisabled={item === ''} />
 			</View>
-			<List itemList={itemList} />
+			<List itemList={itemList} setItemList={setItemList} />
 		</View>
 	)
 }

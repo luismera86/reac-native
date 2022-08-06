@@ -2,12 +2,41 @@ import { StyleSheet } from 'react-native'
 import colors from '../../constants/colors'
 
 export const styles = StyleSheet.create({
-    item: {
-        color: colors.secondary,
-        fontSize: 20,
-        fontWeight: '800',
-        marginVertical: 3,
-        borderBottomWidth: 1,
+	itemContainer: {
+		flex: 1,
+		flexDirection: 'row',
+		alignItems: 'center',
+	},
+	item: {
+		color: colors.secondary,
+		fontSize: 20,
+		fontWeight: '800',
+		marginVertical: 3,
+		borderBottomWidth: 1,
+		width: '90%',
+	},
+	container: {
+		marginVertical: 10,
+	},
+	deleteButton: {
+		fontSize: 22,
+		fontWeight: '900',
+		color: colors.primary,
+		textShadowOffset: { width: 2, height: 2 },
+		textShadowRadius: 5,
+		textShadowColor: 'black',
+	},
+    modalContainer: {
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+        marginTop: 50,
 
+    },
+    modalButtons: {
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginTop: 40,
     }
 })
