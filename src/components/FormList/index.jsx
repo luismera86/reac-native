@@ -16,12 +16,12 @@ const onChangeText = (text) => {
 }
 
 const addItem = () => { 
+    
     setItemList([
         ...itemList,
         item
     ])
-
-    console.log(itemList)
+   
  }
 
   

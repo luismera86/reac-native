@@ -1,12 +1,19 @@
+import React, { useEffect, useState } from 'react'
 import { Text, View } from 'react-native'
 
-import React from 'react'
-
 const List = ({itemList}) => {
+
+
+
+    
   return (
     <View>
-      <Text>{itemList}</Text>
-    </View>
+       {itemList.map(item => (
+        <View key={item}>
+            <Text>{item}</Text>
+        </View>
+       ))}
+    </View> 
   )
 }
 
