@@ -15,8 +15,8 @@ export const style = StyleSheet.create({
 		elevation: 10,
 	},
 	titleHeader: {
-		fontSize: 20,
-		fontWeight: 'bold',
+		fontSize: 30,
+		fontFamily: 'Dyna-Medium',
 		color: colors.primary
 		
 	},
@@ -40,7 +40,7 @@ export const style = StyleSheet.create({
 	},
 	sectionButtonText: {
 		fontSize: 18,
-		fontWeight: 'bold',
+		fontFamily: 'Dyna-Regular',
 		color: colors.background,
 		elevation: 5
 	}

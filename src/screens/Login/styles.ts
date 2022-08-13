@@ -10,7 +10,7 @@ export const style = StyleSheet.create({
 	},
 	textLabel: {
 		fontSize: 18,
-		fontWeight: 'bold',
+		fontFamily: 'Dyna-Regular',
 		color: colors.primary,
 		
 	},
@@ -44,6 +44,6 @@ export const style = StyleSheet.create({
 	},
 	textButton: {
 		color: '#fff',
-		fontWeight: 'bold'
+		fontFamily: 'Dyna-Medium',
 	}
 })

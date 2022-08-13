@@ -5,9 +5,16 @@ import { style } from './styles'
 
 interface Props {
     userName: string
+    userAccess: boolean
+    setUserAccess: (status: boolean) => void
 }
 
-const Sections = ({ userName }: Props) => {
+const Sections = ({ userName, userAccess, setUserAccess }: Props) => {
+
+    const onHandledUserAccess = () => {
+      setUserAccess(!userAccess)
+    }
+    
   return (
     <View style={style.container}>
         <View style={style.containerHeader}>
@@ -28,7 +35,7 @@ const Sections = ({ userName }: Props) => {
             <Text style={style.sectionButtonText}>Otra sección</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={style.sectionButton}>
+      <TouchableOpacity style={style.sectionButton} onPress={onHandledUserAccess}>
             <Text style={style.sectionButtonText}>VOLVER</Text>
         </TouchableOpacity>
     </View>

@@ -47,6 +47,7 @@ const Login = ({setUserPass, setUserName, setUserAccess, userName, userPass } : 
       secureTextEntry={true}
       value={userPass}
       onChangeText={onHandledUserPass}
+      
       />
       <TouchableOpacity style={style.enterButton} onPress={onHandledUserAccess}>
         <Text style={style.textButton}>ENTRAR</Text>
