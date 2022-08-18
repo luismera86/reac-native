@@ -9,8 +9,9 @@ export const style = StyleSheet.create({
 		justifyContent: 'center',
 	},
 	textLabel: {
-		fontSize: 18,
-		fontFamily: 'Dyna-Regular',
+		marginTop: 10,
+		fontSize: 20,
+		fontFamily: 'Dyna-Medium',
 		color: colors.primary,
 		
 	},
@@ -34,9 +35,9 @@ export const style = StyleSheet.create({
 	},
 	enterButton: {
 		backgroundColor: colors.secondary,
-		width: 150,
+		width: 200,
 		padding: 10,
-		marginTop: 10,
+		marginTop: 25,
 		justifyContent: 'center',
 		alignItems: 'center',
 		borderRadius: 10,
@@ -44,6 +45,7 @@ export const style = StyleSheet.create({
 	},
 	textButton: {
 		color: '#fff',
-		fontFamily: 'Dyna-Medium',
+		fontFamily: 'Dyna-Regular',
+		fontSize: 20
 	}
 })

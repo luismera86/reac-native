@@ -1,8 +1,9 @@
 import { Login, Sections } from './screens'
 import { StyleSheet, View } from 'react-native'
 
+import { useEffect } from 'react'
 import { useFonts } from 'expo-font'
-import { useState } from 'react'
+import useLogin from './hooks/useLogin'
 
 export default function App() {
 	
@@ -12,13 +13,16 @@ export default function App() {
     'Dyna-Bold': require('../assets/fonts/DynaPuff-Bold.ttf'),
   })
   
+  const { userName, userAccess, setUserAccess, setUserName, setUserPass, userPass } = useLogin()
  
+  useEffect(() => {
+    console.log(userAccess)
+  }, [userAccess])
+  
 
-  const [userName, setUserName] = useState<string>('')
-	const [userPass, setUserPass] = useState<string>('')
-	const [userAccess, setUserAccess] = useState<boolean>(false)
-
-
+if(!loaded) {
+  return 
+}
   
 	return (
 		<View style={styles.container}>
@@ -28,15 +32,10 @@ export default function App() {
         <Sections userName={userName} setUserAccess={setUserAccess} userAccess={userAccess} /> :
 
 
-        <Login
-          setUserName={setUserName}
-          setUserPass={setUserPass}
-          setUserAccess={setUserAccess}
-          userName={userName}
-          userPass={userPass}
-        />
+        <Login/>
 
       }
+
 		</View>
 	)
 }

@@ -2,6 +2,7 @@ import { Text, TextInput, TouchableOpacity, View } from 'react-native'
 
 import React from 'react'
 import { style } from './styles'
+import useLogin from '../../hooks/useLogin'
 
 interface Props {
     setUserPass: (text: string) => void
@@ -14,6 +15,8 @@ interface Props {
 const Login = ({setUserPass, setUserName, setUserAccess, userName, userPass } : Props) => {
 
     
+
+
 
     const onHandledUserName = (text: string) => { 
         setUserName(text)
@@ -29,6 +32,11 @@ const Login = ({setUserPass, setUserName, setUserAccess, userName, userPass } : 
 
      }
 
+    const onHandleUserRegister = () => {
+      
+    }
+    
+
 
   return (
     <View style={style.container}>
@@ -40,7 +48,7 @@ const Login = ({setUserPass, setUserName, setUserAccess, userName, userPass } : 
       onChangeText={onHandledUserName}
       
       />
-      <Text style={style.textLabel}>INGRESE SU CONTRASEÑA</Text>
+      <Text style={style.textLabel}>CONTRASEÑA</Text>
       <TextInput 
       style={style.input} 
       placeholder='Contraseña' 
@@ -52,6 +60,10 @@ const Login = ({setUserPass, setUserName, setUserAccess, userName, userPass } : 
       <TouchableOpacity style={style.enterButton} onPress={onHandledUserAccess}>
         <Text style={style.textButton}>ENTRAR</Text>
       </TouchableOpacity>
+      <TouchableOpacity style={style.enterButton} onPress={onHandleUserRegister}>
+        <Text style={style.textButton}>REGISTRARSE</Text>
+      </TouchableOpacity>
+
     </View>
   )
 }
