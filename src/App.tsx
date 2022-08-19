@@ -1,9 +1,11 @@
 import { Login, Sections, SignIn } from './screens'
 import { StyleSheet, View } from 'react-native'
 
+import PhotoAlbum from './screens/PhotoAlbum'
 import { useFonts } from 'expo-font'
 import useLogIn from './hooks/useLogIn'
 import useSignIn from './hooks/useSignIn'
+import { useState } from 'react'
 
 export default function App() {
 	const [loaded] = useFonts({
@@ -27,28 +29,48 @@ export default function App() {
 		userSignIn,
 	} = useSignIn()
 
+	const [users, setUsers] = useState <Array<object>>([])
+
 	if (!loaded) {
 		return
 	}
 
 	return (
-		<View style={styles.container}>
 
-      {
-        userAccess ? <Sections userName={userName} setUserAccess={setUserAccess} userAccess={userAccess} /> :
-        userSignIn ? <SignIn
-        userName={userName}
-        userFirstName={userFirstName}
-        userLastName={userLastName}
-        userMail={userMail}
-        userPassword={userPassword}
-        setUserName={setUserName}
-        setUserFirstName={setUserFirstName}
-        setUserLastName={setUserLastName}
-        setUserMail={setUserMail}
-        setUserPassword={setUserPassword}
-      /> :
-      <Login
+		<>
+		<PhotoAlbum />
+		</>
+		
+	)
+}
+
+const styles = StyleSheet.create({
+	container: {},
+})
+
+
+{/* <View style={styles.container}>
+			{userAccess ? (
+				<Sections userName={userName} setUserAccess={setUserAccess} userAccess={userAccess} />
+			) : userSignIn ? (
+				<SignIn
+					userName={userName}
+					userFirstName={userFirstName}
+					userLastName={userLastName}
+					userMail={userMail}
+					userPassword={userPassword}
+					setUserName={setUserName}
+					setUserFirstName={setUserFirstName}
+					setUserLastName={setUserLastName}
+					setUserMail={setUserMail}
+					setUserPassword={setUserPassword}
+					setUsers={setUsers}
+					users={users}
+					setUserSignIn={setUserSignIn}
+					userSignIn={userSignIn}
+				/>
+			) : (
+				<Login
 					setUserName={setUserName}
 					setUserPass={setUserPass}
 					setUserAccess={setUserAccess}
@@ -56,13 +78,5 @@ export default function App() {
 					userPass={userPass}
 					setUserSignIn={setUserSignIn}
 				/>
-      
-      }
-			
-		</View>
-	)
-}
-
-const styles = StyleSheet.create({
-	container: {},
-})
+			)}
+		</View> */}

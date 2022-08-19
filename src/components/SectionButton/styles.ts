@@ -2,25 +2,29 @@ import { StyleSheet } from "react-native";
 import colors from "../../constants/colors";
 
 export const styles = StyleSheet.create({
-    container: {
-        height: '100%',
+  
+    sectionsContainer:{
+		margin: 30,
+		height: 500,
+		elevation: 10,
 		backgroundColor: colors.background,
-		alignItems: 'center',
-		justifyContent: 'center',
-    },
-    enterButton: {
-		backgroundColor: colors.secondary,
-		width: 200,
-		padding: 10,
-		marginTop: 25,
 		justifyContent: 'center',
 		alignItems: 'center',
-		borderRadius: 10,
-		elevation: 6,
 	},
-	textButton: {
-		color: '#fff',
+	sectionButton: {
+		margin: 20,
+		width: 300,
+		backgroundColor: colors.secondary,
+		padding: 10,
+		justifyContent: 'center',
+		alignItems: 'center',
+		elevation: 5,
+		borderRadius: 10,		
+	},
+	sectionButtonText: {
+		fontSize: 18,
 		fontFamily: 'Dyna-Regular',
-		fontSize: 20
+		color: colors.background,
+		elevation: 5
 	}
 });
