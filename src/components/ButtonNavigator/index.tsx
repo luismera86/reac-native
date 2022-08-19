@@ -8,7 +8,7 @@ type Props = {
 	onPress: () => void
 }
 
-const SectionButton = ({ onPress, title}: Props) => {
+const ButtonNavigator = ({ onPress, title }: Props) => {
 	const buttonFunction = () => {
 		onPress()
 	}
@@ -20,4 +20,4 @@ const SectionButton = ({ onPress, title}: Props) => {
 	)
 }
 
-export default SectionButton
+export default ButtonNavigator

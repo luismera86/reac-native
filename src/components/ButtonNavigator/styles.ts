@@ -1,8 +1,8 @@
-import { StyleSheet } from 'react-native'
-import colors from '../../constants/colors'
+import { StyleSheet } from "react-native";
+import colors from "../../constants/colors";
 
 export const styles = StyleSheet.create({
-	Button: {
+    Button: {
 		margin: 20,
 		width: 300,
 		backgroundColor: colors.secondary,
@@ -10,12 +10,12 @@ export const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		elevation: 5,
-		borderRadius: 10,
+		borderRadius: 10,		
 	},
 	ButtonText: {
 		fontSize: 18,
 		fontFamily: 'Dyna-Regular',
 		color: colors.background,
-		elevation: 5,
-	},
-})
+		elevation: 5
+	}
+});

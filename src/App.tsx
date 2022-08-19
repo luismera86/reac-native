@@ -37,9 +37,37 @@ export default function App() {
 
 	return (
 
-		<>
-		<PhotoAlbum />
-		</>
+		<View style={styles.container}>
+			{userAccess ? (
+				<Sections userName={userName} setUserAccess={setUserAccess} userAccess={userAccess} />
+			) : userSignIn ? (
+				<SignIn
+					userName={userName}
+					userFirstName={userFirstName}
+					userLastName={userLastName}
+					userMail={userMail}
+					userPassword={userPassword}
+					setUserName={setUserName}
+					setUserFirstName={setUserFirstName}
+					setUserLastName={setUserLastName}
+					setUserMail={setUserMail}
+					setUserPassword={setUserPassword}
+					setUsers={setUsers}
+					users={users}
+					setUserSignIn={setUserSignIn}
+					userSignIn={userSignIn}
+				/>
+			) : (
+				<Login
+					setUserName={setUserName}
+					setUserPass={setUserPass}
+					setUserAccess={setUserAccess}
+					userName={userName}
+					userPass={userPass}
+					setUserSignIn={setUserSignIn}
+				/>
+			)}
+		</View>
 		
 	)
 }
