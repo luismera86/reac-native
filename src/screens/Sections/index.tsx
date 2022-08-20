@@ -2,6 +2,7 @@ import { ButtonNavigator, Card, Header, SectionButton } from '../../components'
 import React, { useState } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 
+import AlbumNavigator from '../../navigator/AlbumNavigator'
 import PhotoAlbum from '../PhotoAlbum/index'
 import { style } from './styles'
 
@@ -16,15 +17,28 @@ const Sections = ({ userName, userAccess, setUserAccess }: Props) => {
 	const onHandledUserAccess = () => {
 		setUserAccess(!userAccess)
 	}
-
+	
 	const onHandlePhotoAlbumAccess = () => {
 		setPhotoAlbumAccess(!photoAlbumAccess)
+		
+		
 	}
 
 	return (
-		<>
+		<AlbumNavigator />
+	)
+}
+
+export default Sections
+
+/* 
+
+<>
 			{photoAlbumAccess ? (
-				<PhotoAlbum userName={userName} photoAlbumAccess={photoAlbumAccess}  setPhotoAlbumAccess={setPhotoAlbumAccess}/>
+				<View>
+		
+				<AlbumNavigator />
+				</View>
 			) : (
 				<View style={style.container}>
 					<Header userName={userName}/>
@@ -36,7 +50,5 @@ const Sections = ({ userName, userAccess, setUserAccess }: Props) => {
 				</View>
 			)}
 		</>
-	)
-}
 
-export default Sections
+*/

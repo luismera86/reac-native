@@ -1,7 +1,7 @@
 import { Login, Sections, SignIn } from './screens'
-import { StyleSheet, View } from 'react-native'
 
-import PhotoAlbum from './screens/PhotoAlbum'
+import AlbumNavigator from './navigator/AlbumNavigator'
+import { View } from 'react-native'
 import { useFonts } from 'expo-font'
 import useLogIn from './hooks/useLogIn'
 import useSignIn from './hooks/useSignIn'
@@ -36,8 +36,18 @@ export default function App() {
 	}
 
 	return (
+		<AlbumNavigator />
 
-		<View style={styles.container}>
+		
+
+		
+	)
+}
+
+
+/* 
+
+<View >
 			{userAccess ? (
 				<Sections userName={userName} setUserAccess={setUserAccess} userAccess={userAccess} />
 			) : userSignIn ? (
@@ -68,43 +78,7 @@ export default function App() {
 				/>
 			)}
 		</View>
-		
-	)
-}
-
-const styles = StyleSheet.create({
-	container: {},
-})
 
 
-{/* <View style={styles.container}>
-			{userAccess ? (
-				<Sections userName={userName} setUserAccess={setUserAccess} userAccess={userAccess} />
-			) : userSignIn ? (
-				<SignIn
-					userName={userName}
-					userFirstName={userFirstName}
-					userLastName={userLastName}
-					userMail={userMail}
-					userPassword={userPassword}
-					setUserName={setUserName}
-					setUserFirstName={setUserFirstName}
-					setUserLastName={setUserLastName}
-					setUserMail={setUserMail}
-					setUserPassword={setUserPassword}
-					setUsers={setUsers}
-					users={users}
-					setUserSignIn={setUserSignIn}
-					userSignIn={userSignIn}
-				/>
-			) : (
-				<Login
-					setUserName={setUserName}
-					setUserPass={setUserPass}
-					setUserAccess={setUserAccess}
-					userName={userName}
-					userPass={userPass}
-					setUserSignIn={setUserSignIn}
-				/>
-			)}
-		</View> */}
+
+*/
