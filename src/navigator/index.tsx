@@ -1,14 +1,12 @@
-import { Text, View } from 'react-native'
-
+import AlbumNavigator from './AlbumNavigator'
+import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
-type Props = {}
-
-const RootNavigator = (props: Props) => {
+const RootNavigator = () => {
   return (
-    <View>
-      <Text>RootNavigator</Text>
-    </View>
+    <NavigationContainer>
+      <AlbumNavigator />
+    </NavigationContainer>
   )
 }
 

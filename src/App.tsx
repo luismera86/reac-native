@@ -7,45 +7,38 @@ import useLogIn from './hooks/useLogIn'
 import useSignIn from './hooks/useSignIn'
 import { useState } from 'react'
 
-export default function App() {
-	const [loaded] = useFonts({
-		'Dyna-Regular': require('../assets/fonts/DynaPuff-Regular.ttf'),
-		'Dyna-Medium': require('../assets/fonts/DynaPuff-Medium.ttf'),
-		'Dyna-Bold': require('../assets/fonts/DynaPuff-Bold.ttf'),
-	})
+export default function App () {
+  const [loaded] = useFonts({
+    'Dyna-Regular': require('../assets/fonts/DynaPuff-Regular.ttf'),
+    'Dyna-Medium': require('../assets/fonts/DynaPuff-Medium.ttf'),
+    'Dyna-Bold': require('../assets/fonts/DynaPuff-Bold.ttf')
+  })
 
-	const { userName, userAccess, setUserAccess, setUserName, setUserPass, userPass } = useLogIn()
+  const { userName, userAccess, setUserAccess, setUserName, setUserPass, userPass } = useLogIn()
 
-	const {
-		userFirstName,
-		userLastName,
-		userMail,
-		setUserFirstName,
-		setUserLastName,
-		setUserMail,
-		userPassword,
-		setUserPassword,
-		setUserSignIn,
-		userSignIn,
-	} = useSignIn()
+  const {
+    userFirstName,
+    userLastName,
+    userMail,
+    setUserFirstName,
+    setUserLastName,
+    setUserMail,
+    userPassword,
+    setUserPassword,
+    setUserSignIn,
+    userSignIn
+  } = useSignIn()
 
-	const [users, setUsers] = useState <Array<object>>([])
+  const [users, setUsers] = useState<object[]>([])
 
-	if (!loaded) {
-		return
-	}
+  if (!loaded) {
+    return
+  }
 
-	return (
-		<AlbumNavigator />
-
-		
-
-		
-	)
+  return <AlbumNavigator />
 }
 
-
-/* 
+/*
 
 <View >
 			{userAccess ? (
@@ -78,7 +71,5 @@ export default function App() {
 				/>
 			)}
 		</View>
-
-
 
 */

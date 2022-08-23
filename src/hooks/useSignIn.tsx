@@ -1,9 +1,6 @@
-import React from 'react'
-import { useState } from 'react';
+import { useState } from 'react'
 
-type Props = {}
-
-const useSignIn= () => {
+const useSignIn = () => {
   const [userName, setUserName] = useState<string>('')
   const [userFirstName, setUserFirstName] = useState<string>('')
   const [userLastName, setUserLastName] = useState<string>('')
@@ -11,9 +8,8 @@ const useSignIn= () => {
   const [userPassword, setUserPassword] = useState<string>('')
   const [userSignIn, setUserSignIn] = useState<boolean>(false)
 
-
-  return (
-    {userName,
+  return {
+    userName,
     setUserName,
     userFirstName,
     setUserFirstName,
@@ -24,9 +20,8 @@ const useSignIn= () => {
     userPassword,
     setUserPassword,
     userSignIn,
-    setUserSignIn
+    setUserSignIn,
   }
-  )
 }
 
 export default useSignIn
