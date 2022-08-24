@@ -5,12 +5,12 @@ import { styles } from './styles'
 
 interface Props {
   title: string
-  onPress: () => void
+  onPress?: () => void
 }
 
 const SectionButton = ({ onPress, title }: Props) => {
   const buttonFunction = () => {
-    onPress()
+    onPress?.()
   }
 
   return (

@@ -1,11 +1,11 @@
-import AlbumNavigator from './AlbumNavigator'
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
+import Tabs from './Tabs'
 
 const RootNavigator = () => {
   return (
     <NavigationContainer>
-      <AlbumNavigator />
+      <Tabs />
     </NavigationContainer>
   )
 }

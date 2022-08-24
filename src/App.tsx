@@ -1,17 +1,18 @@
 import { Login, Sections, SignIn } from './screens'
 
 import AlbumNavigator from './navigator/AlbumNavigator'
+import RootNavigator from './navigator'
 import { View } from 'react-native'
 import { useFonts } from 'expo-font'
 import useLogIn from './hooks/useLogIn'
 import useSignIn from './hooks/useSignIn'
 import { useState } from 'react'
 
-export default function App () {
+export default function App() {
   const [loaded] = useFonts({
     'Dyna-Regular': require('../assets/fonts/DynaPuff-Regular.ttf'),
     'Dyna-Medium': require('../assets/fonts/DynaPuff-Medium.ttf'),
-    'Dyna-Bold': require('../assets/fonts/DynaPuff-Bold.ttf')
+    'Dyna-Bold': require('../assets/fonts/DynaPuff-Bold.ttf'),
   })
 
   const { userName, userAccess, setUserAccess, setUserName, setUserPass, userPass } = useLogIn()
@@ -26,7 +27,7 @@ export default function App () {
     userPassword,
     setUserPassword,
     setUserSignIn,
-    userSignIn
+    userSignIn,
   } = useSignIn()
 
   const [users, setUsers] = useState<object[]>([])
@@ -35,7 +36,7 @@ export default function App () {
     return
   }
 
-  return <AlbumNavigator />
+  return <RootNavigator />
 }
 
 /*
