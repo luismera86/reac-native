@@ -1,35 +1,21 @@
 import { Card, Header, SectionButton } from '../../components'
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react'
 
-import AlbumNavigator from '../../navigator/AlbumNavigator'
+import { RootStackParamList } from '../../navigator/SectionsNavigator'
+import { StackScreenProps } from '@react-navigation/stack'
 import { View } from 'react-native'
 import { style } from './styles'
 
-interface Props {
-  userName: string
-  userAccess: boolean
-  setUserAccess: (status: boolean) => void
-}
+interface Props extends StackScreenProps<RootStackParamList> {}
 
-const Sections = ({ userName, userAccess, setUserAccess }: Props) => {
-  const [photoAlbumAccess, setPhotoAlbumAccess] = useState(false)
-  const onHandledUserAccess = () => {
-    setUserAccess(!userAccess)
-  }
-
-  const onHandlePhotoAlbumAccess = () => {
-    setPhotoAlbumAccess(!photoAlbumAccess)
-  }
-
+const Sections = ({ navigation }: Props) => {
+  const handleNavigateUserList = () => navigation.navigate('UserList')
   return (
     <View style={style.container}>
-      <Header userName='Luis' />
+      <Header userName='' />
       <Card width={350}>
-        <SectionButton title='App List' />
+        <SectionButton title='Lista de Usuarios' onPress={handleNavigateUserList} />
       </Card>
     </View>
   )
 }
-
 export default Sections

@@ -1,33 +1,29 @@
 import { ButtonNavigator, Card, Header, SectionButton } from '../../components'
 
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React from 'react'
-import { RootStackParamList } from '../../types/RootStackPrams'
+import { RootStackParamList } from '../../navigator/AlbumNavigator'
+import { StackScreenProps } from '@react-navigation/stack'
 import { View } from 'react-native'
 import { styles } from './styles'
-import { useNavigation } from '@react-navigation/native'
 
-interface Props {
+interface Props extends StackScreenProps<RootStackParamList> {
   userName: string
   setPhotoAlbumAccess: (status: boolean) => void
   photoAlbumAccess: boolean
 }
 
-type ScreenProps = NativeStackNavigationProp<RootStackParamList>
-
-const PhotoAlbum = ({ userName, setPhotoAlbumAccess, photoAlbumAccess }: Props) => {
-  const navigator = useNavigation<ScreenProps>()
+const PhotoAlbum = ({ userName, setPhotoAlbumAccess, photoAlbumAccess, navigation }: Props) => {
   const onHandledUserAccess = () => {
     setPhotoAlbumAccess(!photoAlbumAccess)
   }
   const onHandleNavigateAlbum1 = () => {
-    navigator.navigate('Album1')
+    navigation.navigate('Album1')
   }
   const onHandleNavigateAlbum2 = () => {
-    navigator.navigate('Album2')
+    navigation.navigate('Album2')
   }
   const onHandleNavigateAlbum3 = () => {
-    navigator.navigate('Album3')
+    navigation.navigate('Album3')
   }
   return (
     <View style={styles.container}>
