@@ -2,50 +2,31 @@ import { Text, TouchableOpacity, View } from 'react-native'
 
 import { LabelInputForm } from '../../components'
 import React from 'react'
+import { User } from '../../interfaces/user'
+import { addUsersDb } from '../../features/users/usersSlice'
+// import { addUser } from '../../features/users/usersSlice'
 import { styles } from './styles'
+import { useAppDispatch } from '../../app/hooks'
+import useSignIn from '../../hooks/useSignIn'
 
-interface User {
-  id: string
-  username: string
-  firstname: string
-  lastname: string
-  email: string
-  password: string
-}
+const SignIn = () => {
+  const {
+    setUserFirstName,
+    setUserLastName,
+    setUserMail,
+    setUserName,
+    setUserPassword,
+    setUserSignIn,
+    userFirstName,
+    userLastName,
+    userMail,
+    userName,
+    userPassword,
+    userSignIn,
+  } = useSignIn()
+  // const listUsers = useAppSelector(stack => stack.users)
+  const dispatch = useAppDispatch()
 
-interface Props {
-  userName: string
-  setUserName: (text: string) => void
-  userFirstName: string
-  setUserFirstName: (text: string) => void
-  userLastName: string
-  setUserLastName: (text: string) => void
-  userMail: string
-  setUserMail: (text: string) => void
-  userPassword: string
-  setUserPassword: (text: string) => void
-  setUsers: ([]: object[]) => void
-  users: object[]
-  setUserSignIn: (state: boolean) => void
-  userSignIn: boolean
-}
-
-const SignIn = ({
-  userName,
-  setUserName,
-  userFirstName,
-  setUserFirstName,
-  userLastName,
-  setUserLastName,
-  userMail,
-  setUserMail,
-  userPassword,
-  setUserPassword,
-  setUsers,
-  users,
-  setUserSignIn,
-  userSignIn,
-}: Props) => {
   const onChangeUserName = (text: string) => setUserName(text)
   const onChangeUserFirsName = (text: string) => setUserFirstName(text)
   const onChangeUserLastName = (text: string) => setUserLastName(text)
@@ -61,17 +42,20 @@ const SignIn = ({
       password: userPassword,
     }
 
-    setUsers([...users, newUser])
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    dispatch(addUsersDb(newUser))
+
     setUserSignIn(!userSignIn)
     setUserName('')
     setUserFirstName('')
     setUserLastName('')
     setUserMail('')
     setUserPassword('')
-
-    console.log(users)
   }
-  const onHandleReturn = () => setUserSignIn(!userSignIn)
+  const onHandleReturn = () => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    // dispatch(getUserDb())
+  }
   return (
     <View style={styles.container}>
       <Text>REGISTRA UN USUARIO NUEVO</Text>
