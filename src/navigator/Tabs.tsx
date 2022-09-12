@@ -17,26 +17,6 @@ const Tabs = () => {
         headerShown: false,
       }}>
       <BottomTab.Screen
-        name='LoginTab'
-        component={Login}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <View>
-              <FontAwesome name='home' size={24} color='black' />
-              <Text>Login</Text>
-            </View>
-          ),
-          tabBarShowLabel: false, // Desaparece el nombre por defecto
-        }}
-      />
-      <BottomTab.Screen
-        name='SignInTab'
-        component={SignIn}
-        options={{
-          title: 'Registro',
-        }}
-      />
-      <BottomTab.Screen
         name='SectionsTab'
         component={SectionsNavigator}
         options={{
@@ -50,10 +30,10 @@ const Tabs = () => {
         }}
       />
       <BottomTab.Screen
-        name='AlbumNavigatorTab'
-        component={AlbumNavigator}
+        name='SignInTab'
+        component={SignIn}
         options={{
-          title: 'Album',
+          title: 'Registro',
         }}
       />
     </BottomTab.Navigator>

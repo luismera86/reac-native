@@ -5,5 +5,12 @@ Problemas a solucionar:
 
 # Revisar problema con la conexión a firebase
 - La conexión demora 1 o 2 minutos en hacer un post, hay que revisar si no es problema con redux:
-* Probar hacer un array de usuarios y ese array enviarlo directamente a firebase
+12/9 al parecer ya funciona bien se cambió de lugar el thunk y se incorporo en el archivo Slice
+
+# Implementar el sistema de log in, ver en la calase como hizo el profesor
+
+# Implementar el sistema de fotos para guardar en al galería, el mismo que uso el profe en el proyecto
+
+# Implementar la app todo con persistencia en firebase
+
 

@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
+import { AppDispatch } from '../../app/store'
 import { URL_API } from '../../constants/firebase'
 import { User } from '../../interfaces/user'
 
@@ -9,16 +10,20 @@ const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    addUser: (state, action: PayloadAction<User>) => {
+    setUser: (state, action: PayloadAction<User>) => {
       state.push(action.payload)
     },
     getUser: state => {
+      getUsers()
       return state
     },
   },
 })
 
-export const { addUser } = usersSlice.actions
+export const { setUser, getUser } = usersSlice.actions
+
+// Thunks
+
 export const addUsersDb = (users: User) => {
   console.log('entrando en addUser')
   return async () => {
@@ -38,6 +43,24 @@ export const addUsersDb = (users: User) => {
     } catch (error) {
       console.log(error)
     }
+  }
+}
+
+export const getUsers = () => {
+  return async (dispatch: AppDispatch) => {
+    console.log('haciendo get user')
+    const response = await fetch(`${URL_API}/users.json`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    const data = await response.json()
+    const list = Object.keys(data).map(keys => ({
+      ...data[keys],
+      id: keys,
+    }))
+    console.log(list)
   }
 }
 
