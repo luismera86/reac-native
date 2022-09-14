@@ -44,7 +44,6 @@ const SignIn = () => {
 
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     dispatch(addUsersDb(newUser))
-    dispatch(getUsers())
 
     setUserSignIn(!userSignIn)
     setUserName('')

@@ -26,7 +26,7 @@ export const { setUser, getUser } = usersSlice.actions
 
 export const addUsersDb = (users: User) => {
   console.log('entrando en addUser')
-  return async () => {
+  return async (dispatch: AppDispatch) => {
     try {
       console.log('por hacer el fetch')
       const response = await fetch(`${URL_API}/users.json`, {
@@ -37,6 +37,7 @@ export const addUsersDb = (users: User) => {
         body: JSON.stringify(users),
       })
       const data = await response.json()
+      void dispatch(getUsers())
 
       console.log(data)
       console.log('termino')

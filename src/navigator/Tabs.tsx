@@ -1,10 +1,8 @@
-import { Login, SignIn } from '../screens'
-import { Text, View } from 'react-native'
-
-import AlbumNavigator from './AlbumNavigator'
 import { FontAwesome } from '@expo/vector-icons'
 import React from 'react'
 import SectionsNavigator from './SectionsNavigator'
+import { SignIn } from '../screens'
+import { View } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 const BottomTab = createBottomTabNavigator()
@@ -22,8 +20,7 @@ const Tabs = () => {
         options={{
           tabBarIcon: ({ focused }) => (
             <View>
-              <FontAwesome name='navicon' size={24} color='black' />
-              <Text>Sections</Text>
+              <FontAwesome name='navicon' size={26} color='#8D99AE' />
             </View>
           ),
           tabBarShowLabel: false,
@@ -33,7 +30,12 @@ const Tabs = () => {
         name='SignInTab'
         component={SignIn}
         options={{
-          title: 'Registro',
+          tabBarIcon: ({ focused }) => (
+            <View>
+              <FontAwesome name='sign-in' size={26} color='#8D99AE' />
+            </View>
+          ),
+          tabBarShowLabel: false,
         }}
       />
     </BottomTab.Navigator>
