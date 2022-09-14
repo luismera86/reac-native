@@ -9,11 +9,14 @@ interface Props extends StackScreenProps<RootStackParamList> {}
 
 const Sections = ({ navigation }: Props) => {
   const handleNavigateUserList = () => navigation.navigate('UserList')
+  const handleNavigateImages = () => navigation.navigate('Images')
+
   return (
     <View style={style.container}>
       <Header userName='' />
       <Card width={350}>
         <SectionButton title='Lista de Usuarios' onPress={handleNavigateUserList} />
+        <SectionButton title='Imágenes' onPress={handleNavigateImages} />
       </Card>
     </View>
   )
