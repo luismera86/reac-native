@@ -1,3 +1,4 @@
+import ImagesNavigator from './ImagesNavigator'
 import { Sections } from '../screens'
 import UserList from '../screens/UserList'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
