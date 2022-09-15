@@ -4,6 +4,7 @@ import * as FileSystem from 'expo-file-system'
 
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
+import { AppDispatch } from '../../app/store'
 import ImageModel from '../../models/imageModel'
 
 const initialState: ImageModel[] = []
@@ -27,15 +28,9 @@ export const imagesSlice = createSlice({
 export const { addImage } = imagesSlice.actions
 
 export const saveImage = (title: string, description: string, image: string) => {
-  return async (dispatch: any) => {
-    const fileName = image.split('/').pop()
-    const newPath = FileSystem.documentDirectory + fileName
+  return async (dispatch: AppDispatch) => {
     try {
-      await FileSystem.moveAsync({
-        from: image,
-        to: newPath,
-      })
-      dispatch(addImage({ title, description, image: newPath }))
+      dispatch(addImage({ title, description, image }))
     } catch (error) {
       console.log(error)
       throw error
