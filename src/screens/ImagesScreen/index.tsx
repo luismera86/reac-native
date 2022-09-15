@@ -1,16 +1,22 @@
-import { Text, View } from 'react-native'
+import { Image, Text, TouchableOpacity, View } from 'react-native'
 
 import React from 'react'
-import { useAppSelector } from '../../app/hooks'
+import { styles } from './styles'
 
-const ImagesScreen = () => {
-  const images = useAppSelector(state => state.images)
-  console.log(images)
-
+interface Props {
+  title: string
+  description: string
+  image: string
+  onPress?: (prop: any) => void
+}
+const ImagesScreen = ({ title, description, image, onPress }: Props) => {
   return (
-    <View>
-      <Text>ImagesScreen</Text>
-    </View>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
+      <Image source={{ uri: image }} style={styles.image} />
+      <View style={styles.info}>
+        <Text style={styles.title}>{title}</Text>
+      </View>
+    </TouchableOpacity>
   )
 }
 

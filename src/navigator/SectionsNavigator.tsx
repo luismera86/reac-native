@@ -1,4 +1,4 @@
-import { ImageDetailsScreen, ImagesScreen, NewImage, Sections } from '../screens'
+import { ImageDetailsScreen, ImagesListScreen, ImagesScreen, NewImage, Sections } from '../screens'
 
 import { FontAwesome } from '@expo/vector-icons'
 import React from 'react'
@@ -14,6 +14,7 @@ export type RootStackParamList = {
   Images: undefined
   NewImage: undefined
   ImageDetails: undefined
+  ImagesList: undefined
 }
 
 const Stack = createNativeStackNavigator()
@@ -24,9 +25,11 @@ const SectionsNavigator = () => {
       <Stack.Screen name='sections' component={Sections} />
       <Stack.Screen name='UserList' component={UserList} />
       <Stack.Screen name='NewImage' component={NewImage} />
+      <Stack.Screen name='Images' component={ImagesScreen} />
+      <Stack.Screen name='ImageDetails' component={ImageDetailsScreen} />
       <Stack.Screen
-        name='Images'
-        component={ImagesScreen}
+        name='ImagesList'
+        component={ImagesListScreen}
         options={({ navigation }) => ({
           headerRight: () => (
             <TouchableOpacity onPress={() => navigation.navigate('NewImage')}>
@@ -35,7 +38,6 @@ const SectionsNavigator = () => {
           ),
         })}
       />
-      <Stack.Screen name='ImageDetails' component={ImageDetailsScreen} />
     </Stack.Navigator>
   )
 }

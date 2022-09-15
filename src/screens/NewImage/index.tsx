@@ -26,7 +26,7 @@ const NewImage = ({ navigation }: Props) => {
   }
   const onHandleSubmit = () => {
     dispatch(saveImage(title, description, image))
-    navigation.navigate('Images')
+    navigation.navigate('ImagesList')
   }
 
   const onHandleTakeImage = (url: string) => {
