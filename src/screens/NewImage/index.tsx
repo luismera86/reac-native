@@ -1,8 +1,8 @@
+import { ImageSelector, SectionButton } from '../../components'
 import { ScrollView, Text, TextInput, View } from 'react-native'
 
 import React from 'react'
 import { RootStackParamList } from '../../navigator/SectionsNavigator'
-import { SectionButton } from '../../components'
 import { StackScreenProps } from '@react-navigation/stack'
 import { addImage } from '../../features/imagesSlice/imagesSlice'
 import { style } from './styles'
@@ -33,6 +33,7 @@ const NewImage = ({ navigation }: Props) => {
         <TextInput style={style.input} onChangeText={handleOnChangeTitle} value={title} />
         <Text style={style.title}>Descripción de la imagen</Text>
         <TextInput style={style.input} onChangeText={handleOnChangeDescription} value={description} />
+        <ImageSelector />
         <SectionButton title='GUARDAR' onPress={onHandleSubmit} />
       </View>
     </ScrollView>
