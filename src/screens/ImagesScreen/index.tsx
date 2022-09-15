@@ -7,7 +7,7 @@ interface Props {
   title: string
   description: string
   image: string
-  onPress?: (prop: any) => void
+  onPress?: () => any
 }
 const ImagesScreen = ({ title, description, image, onPress }: Props) => {
   return (

@@ -15,7 +15,17 @@ interface itemsProps {
 const ImagesListScreen = ({ navigation }: Props) => {
   const images = useAppSelector(state => state.images)
   const renderItem = ({ item }: itemsProps) => (
-    <ImagesScreen {...item} onPress={() => navigation.navigate('ImageDetails', { imageId: item.id })} />
+    <ImagesScreen
+      {...item}
+      onPress={() =>
+        navigation.navigate('ImageDetails', {
+          id: item.id,
+          title: item.title,
+          description: item.description,
+          image: item.image,
+        })
+      }
+    />
   )
 
   return (
