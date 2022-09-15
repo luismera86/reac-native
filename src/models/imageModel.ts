@@ -1,12 +1,14 @@
 class ImageModel {
-  public id: string
-  public tile: string
+  public id?: string
+  public title: string
   public description: string
+  public image?: string
 
-  constructor (id: string, tile: string, description: string) {
+  constructor (id: string, title: string, description: string, image?: string) {
     this.id = id
-    this.tile = tile
+    this.title = title
     this.description = description
+    this.image = image
   }
 }
 

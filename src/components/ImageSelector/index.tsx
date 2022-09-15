@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable no-useless-return */
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
@@ -11,7 +12,11 @@ import React, { useState } from 'react'
 import SectionButton from '../SectionButton/index'
 import { styles } from './styles'
 
-const ImageSelector = () => {
+interface Props {
+  onImage: (url: string) => void
+}
+
+const ImageSelector = ({ onImage }: Props) => {
   const [pickedUrl, setPickedUrl] = useState(null)
   const verifyPermissions = async () => {
     const { status } = await ImagePicker.requestCameraPermissionsAsync()
@@ -30,7 +35,9 @@ const ImageSelector = () => {
       aspect: [16, 9],
       quality: 0.7,
     })
+
     setPickedUrl(image.uri)
+    onImage(image.uri)
   }
   return (
     <View style={styles.container}>

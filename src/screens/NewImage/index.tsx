@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
+
 import { ImageSelector, SectionButton } from '../../components'
 import { ScrollView, Text, TextInput, View } from 'react-native'
 
 import React from 'react'
 import { RootStackParamList } from '../../navigator/SectionsNavigator'
 import { StackScreenProps } from '@react-navigation/stack'
-import { addImage } from '../../features/imagesSlice/imagesSlice'
+import { saveImage } from '../../features/imagesSlice/imagesSlice'
 import { style } from './styles'
 import { useAppDispatch } from '../../app/hooks'
 
@@ -15,6 +17,7 @@ const NewImage = ({ navigation }: Props) => {
 
   const [title, setTitle] = React.useState('')
   const [description, setDescription] = React.useState('')
+  const [image, setImage] = React.useState('')
   const handleOnChangeTitle = (text: string) => {
     setTitle(text)
   }
@@ -22,8 +25,12 @@ const NewImage = ({ navigation }: Props) => {
     setDescription(text)
   }
   const onHandleSubmit = () => {
-    dispatch(addImage({ title, description }))
+    dispatch(saveImage(title, description, image))
     navigation.navigate('Images')
+  }
+
+  const onHandleTakeImage = (url: string) => {
+    setImage(url)
   }
 
   return (
@@ -33,7 +40,7 @@ const NewImage = ({ navigation }: Props) => {
         <TextInput style={style.input} onChangeText={handleOnChangeTitle} value={title} />
         <Text style={style.title}>Descripción de la imagen</Text>
         <TextInput style={style.input} onChangeText={handleOnChangeDescription} value={description} />
-        <ImageSelector />
+        <ImageSelector onImage={onHandleTakeImage} />
         <SectionButton title='GUARDAR' onPress={onHandleSubmit} />
       </View>
     </ScrollView>
