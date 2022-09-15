@@ -26,6 +26,7 @@ const ImagesListScreen = ({ navigation }: Props) => {
         })
       }
     />
+    // No logro resolver el tipado en este componente
   )
 
   return (

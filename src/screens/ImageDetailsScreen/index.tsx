@@ -9,6 +9,7 @@ interface Props extends StackScreenProps<RootStackParamList> {}
 
 const ImageDetailsScreen = ({ navigation, route }: Props) => {
   const { title, image, description } = route.params
+  // No logro resolver el tipado en este componente ya que me sigue marcando que no es de un tipo undefined por más que haga una interface particular para este componente
 
   return (
     <View style={styles.container}>
