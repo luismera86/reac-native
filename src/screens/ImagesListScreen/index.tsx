@@ -1,19 +1,25 @@
 import { FlatList, Text, View } from 'react-native'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
 
 import ImageModel from '../../models/imageModel'
 import ImagesScreen from '../ImagesScreen'
-import React from 'react'
 import { RootStackParamList } from '../../navigator/SectionsNavigator'
 import { StackScreenProps } from '@react-navigation/stack'
+import { loadImages } from '../../features/imagesSlice/imagesSlice'
 import { styles } from './styles'
-import { useAppSelector } from '../../app/hooks'
+import { useEffect } from 'react'
 
 interface Props extends StackScreenProps<RootStackParamList> {}
 interface itemsProps {
   item: ImageModel
 }
 const ImagesListScreen = ({ navigation }: Props) => {
+  const dispatch = useAppDispatch()
   const images = useAppSelector(state => state.images)
+  useEffect(() => {
+    dispatch(loadImages())
+  }, [])
+
   const renderItem = ({ item }: itemsProps) => (
     <ImagesScreen
       {...item}

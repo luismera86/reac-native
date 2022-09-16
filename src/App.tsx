@@ -2,8 +2,18 @@ import { Provider } from 'react-redux'
 /* eslint-disable @typescript-eslint/space-before-function-paren */
 import React from 'react'
 import RootNavigator from './navigator'
+import { init } from './db'
 import { store } from './app/store'
 import { useFonts } from 'expo-font'
+
+init()
+  .then(() => {
+    console.log('Initialized database')
+  })
+  .catch((err) => {
+    console.log('Initializing db failed.')
+    console.log(err)
+  })
 
 export default function App() {
   const [loaded] = useFonts({
