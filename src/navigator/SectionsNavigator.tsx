@@ -1,6 +1,7 @@
 import { ImageDetailsScreen, ImagesListScreen, ImagesScreen, NewImage, Sections } from '../screens'
 
 import { FontAwesome } from '@expo/vector-icons'
+import FormList from '../screens/AppList/FormList'
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
 import UserList from '../screens/UserList'
@@ -15,6 +16,7 @@ export type RootStackParamList = {
   NewImage: undefined
   ImageDetails: undefined
   ImagesList: undefined
+  AppList: undefined
 }
 
 const Stack = createNativeStackNavigator()
@@ -27,6 +29,7 @@ const SectionsNavigator = () => {
       <Stack.Screen name='NewImage' component={NewImage} />
       <Stack.Screen name='Images' component={ImagesScreen} />
       <Stack.Screen name='ImageDetails' component={ImageDetailsScreen} />
+      <Stack.Screen name='AppList' component={FormList} />
       <Stack.Screen
         name='ImagesList'
         component={ImagesListScreen}
