@@ -13,7 +13,7 @@ const generarId = () => {
   return random + fecha
 }
 
-const FormList = () => {
+const TodoList = () => {
   const [item, setItem] = useState('')
   const [itemList, setItemList] = useState<ItemList[]>([])
 
@@ -50,4 +50,4 @@ const FormList = () => {
   )
 }
 
-export default FormList
+export default TodoList

@@ -1,8 +1,8 @@
 import { ImageDetailsScreen, ImagesListScreen, ImagesScreen, NewImage, Sections } from '../screens'
 
 import { FontAwesome } from '@expo/vector-icons'
-import FormList from '../screens/AppList/FormList'
 import React from 'react'
+import TodoListAppScreen from '../screens/TodoListAppScreen'
 import { TouchableOpacity } from 'react-native'
 import UserList from '../screens/UserList'
 import colors from '../constants/colors'
@@ -29,7 +29,7 @@ const SectionsNavigator = () => {
       <Stack.Screen name='NewImage' component={NewImage} />
       <Stack.Screen name='Images' component={ImagesScreen} />
       <Stack.Screen name='ImageDetails' component={ImageDetailsScreen} />
-      <Stack.Screen name='AppList' component={FormList} />
+      <Stack.Screen name='AppList' component={TodoListAppScreen} />
       <Stack.Screen
         name='ImagesList'
         component={ImagesListScreen}

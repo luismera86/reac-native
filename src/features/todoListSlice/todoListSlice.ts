@@ -40,7 +40,7 @@ export const addTodoListDb = (todoList: ItemList) => {
   }
 }
 
-export const getTodoList = () => {
+export const getTodoListDb = () => {
   return async (dispatch: AppDispatch) => {
     const response = await fetch(`${URL_API}/todoList.json`, {
       method: 'GET',
