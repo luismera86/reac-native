@@ -1,56 +1,48 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 import { AppDispatch } from '../../app/store'
+import { ItemList } from '../../interfaces/ItemList'
 import { URL_API } from '../../constants/firebase'
-import { User } from '../../interfaces/User'
 
-const initialState: User[] = []
+const initialState: ItemList[] = []
 
-const usersSlice = createSlice({
-  name: 'users',
+const todoListSlice = createSlice({
+  name: 'todoList',
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<User>) => {
+    setTodoList: (state, action: PayloadAction<ItemList>) => {
       state.push(action.payload)
     },
-    getUser: state => {
-      getUsers()
-      return state
-    },
+    getTodoList: state => state,
   },
 })
 
-export const { setUser, getUser } = usersSlice.actions
+export const { setTodoList } = todoListSlice.actions
 
 // Thunks
 
-export const addUsersDb = (users: User) => {
-  console.log('entrando en addUser')
+export const addTodoListDb = (todoList: ItemList) => {
   return async (dispatch: AppDispatch) => {
     try {
-      console.log('por hacer el fetch')
-      const response = await fetch(`${URL_API}/users.json`, {
+      const response = await fetch(`${URL_API}/todoList.json`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(users),
+        body: JSON.stringify(todoList),
       })
       const data = await response.json()
-      void dispatch(getUsers())
 
       console.log(data)
-      console.log('termino')
     } catch (error) {
       console.log(error)
     }
   }
 }
 
-export const getUsers = () => {
+export const getTodoList = () => {
   return async (dispatch: AppDispatch) => {
-    console.log('haciendo get user')
-    const response = await fetch(`${URL_API}/users.json`, {
+    const response = await fetch(`${URL_API}/todoList.json`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -58,11 +50,13 @@ export const getUsers = () => {
     })
     const data = await response.json()
     const list = Object.keys(data).map(keys => ({
-      ...data[keys],
       id: keys,
+      ...data[keys],
     }))
-    console.log(list)
+    list.forEach(item => {
+      dispatch(setTodoList(item))
+    })
   }
 }
 
-export default usersSlice.reducer
+export default todoListSlice.reducer

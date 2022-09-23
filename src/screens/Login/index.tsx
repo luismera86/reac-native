@@ -4,8 +4,6 @@ import { LabelInputForm } from '../../components'
 import React from 'react'
 import { style } from './styles'
 
-console.log('dfsf')
-
 interface Props {
   setUserPass: (text: string) => void
   setUserName: (text: string) => void

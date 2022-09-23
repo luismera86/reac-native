@@ -1,12 +1,11 @@
 import { Text, TouchableOpacity, View } from 'react-native'
-import { addUsersDb, getUser, getUsers } from '../../features/users/usersSlice'
-import { useAppDispatch, useAppSelector } from '../../app/hooks'
 
 import { LabelInputForm } from '../../components'
 import React from 'react'
-import { User } from '../../interfaces/user'
-// import { addUser } from '../../features/users/usersSlice'
+import { User } from '../../interfaces/User'
+import { addUsersDb } from '../../features/users/usersSlice'
 import { styles } from './styles'
+import { useAppDispatch } from '../../app/hooks'
 import useSignIn from '../../hooks/useSignIn'
 
 const SignIn = () => {
@@ -26,7 +25,6 @@ const SignIn = () => {
   } = useSignIn()
   // const listUsers = useAppSelector(stack => stack.users)
   const dispatch = useAppDispatch()
-  const list = useAppSelector(state => state.users)
 
   const onChangeUserName = (text: string) => setUserName(text)
   const onChangeUserFirsName = (text: string) => setUserFirstName(text)

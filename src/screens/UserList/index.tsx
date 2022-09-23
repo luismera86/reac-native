@@ -2,7 +2,7 @@ import { FlatList, StyleSheet, Text, View } from 'react-native'
 
 import { Header } from '../../components'
 import React from 'react'
-import { User } from '../../interfaces/user'
+import { User } from '../../interfaces/User'
 import { useAppSelector } from '../../app/hooks'
 
 interface UserListe<T, U> {
