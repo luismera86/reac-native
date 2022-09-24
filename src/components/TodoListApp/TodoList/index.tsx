@@ -1,21 +1,18 @@
 import { Button, Text, TextInput, View } from 'react-native'
+import { useAppDispatch, useAppSelector } from '../../../app/hooks'
 
 import { ItemList } from '../../../interfaces/ItemList'
 import List from '../List'
+import { addTodoListDb } from '../../../features/todoListSlice/todoListSlice'
 import colors from '../../../constants/colors'
 import { styles } from './styles'
 import { useState } from 'react'
 
-const generarId = () => {
-  const random = Math.random().toString(36).substr(2)
-  const fecha = Date.now().toString(36)
-
-  return random + fecha
-}
-
 const TodoList = () => {
+  const itemListStage: ItemList[] = useAppSelector(state => state.todoList)
+  const dispatch = useAppDispatch()
   const [item, setItem] = useState('')
-  const [itemList, setItemList] = useState<ItemList[]>([])
+  // const [itemList, setItemList] = useState<ItemList[]>([])
 
   const onChangeText = (text: string) => {
     setItem(text)
@@ -24,10 +21,11 @@ const TodoList = () => {
   const addItem = () => {
     if (item.length > 0) {
       const newItem = {
-        id: generarId(),
         item,
       }
-      setItemList([...itemList, newItem])
+      // setItemList([...itemList, newItem])
+      void dispatch(addTodoListDb(newItem))
+      console.log(itemListStage)
 
       setItem('')
     }
@@ -45,7 +43,7 @@ const TodoList = () => {
       <View>
         <Button title='AGREGAR' color={colors.tertiary} onPress={addItem} touchSoundDisabled={item === ''} />
       </View>
-      <List itemList={itemList} setItemList={setItemList} />
+      <List itemList={itemListStage} />
     </View>
   )
 }

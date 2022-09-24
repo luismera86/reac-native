@@ -1,13 +1,15 @@
 import { Button, FlatList, Modal, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 
+import { FontAwesome } from '@expo/vector-icons'
 import { ItemList } from '../../../interfaces/ItemList'
 import colors from '../../../constants/colors'
+import { deleteTodoListDb } from '../../../features/todoListSlice/todoListSlice'
 import { styles } from './styles'
+import { useAppDispatch } from '../../../app/hooks'
 
 interface Props {
   itemList: ItemList[]
-  setItemList: React.Dispatch<React.SetStateAction<ItemList[]>>
 }
 interface Item {
   item: {
@@ -16,20 +18,26 @@ interface Item {
   }
 }
 
-const List = ({ itemList, setItemList }: Props) => {
+const List = ({ itemList }: Props) => {
+  const dispatch = useAppDispatch()
+
   const [modalVisibility, setModalVisibility] = useState(false)
-  const [itemSelected, setItemSelected] = useState({})
+  const [itemSelected, setItemSelected] = useState<ItemList>({
+    id: '',
+    item: '',
+  })
 
   const onHandledModal = (id: string) => {
     const itemFilter = itemList.filter(item => item.id === id)[0]
+
     setItemSelected(itemFilter)
     setModalVisibility(!modalVisibility)
   }
 
   const onHandledDelete = (id: string) => {
-    const itemFilter = itemList.filter((item: ItemList) => item.id !== id)
-    setItemList(itemFilter)
-    setItemSelected({})
+    void dispatch(deleteTodoListDb(id))
+
+    setItemSelected({ id: '', item: '' })
     setModalVisibility(!modalVisibility)
   }
 
@@ -37,7 +45,7 @@ const List = ({ itemList, setItemList }: Props) => {
     <View style={styles.itemContainer}>
       <Text style={styles.item}>{item.item}</Text>
       <TouchableOpacity onPress={() => onHandledModal(item.id)}>
-        <Text style={styles.deleteButton}>X</Text>
+        <FontAwesome name='remove' size={24} color='red' />
       </TouchableOpacity>
     </View>
   )
