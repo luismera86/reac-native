@@ -1,18 +1,21 @@
 import { Button, Text, TextInput, View } from 'react-native'
+import { addTodoListDb, getTodoListDb } from '../../../features/todoListSlice/todoListSlice'
 import { useAppDispatch, useAppSelector } from '../../../app/hooks'
+import { useEffect, useState } from 'react'
 
 import { ItemList } from '../../../interfaces/ItemList'
 import List from '../List'
-import { addTodoListDb } from '../../../features/todoListSlice/todoListSlice'
 import colors from '../../../constants/colors'
 import { styles } from './styles'
-import { useState } from 'react'
 
 const TodoList = () => {
   const itemListStage: ItemList[] = useAppSelector(state => state.todoList)
   const dispatch = useAppDispatch()
   const [item, setItem] = useState('')
-  // const [itemList, setItemList] = useState<ItemList[]>([])
+
+  useEffect(() => {
+    void dispatch(getTodoListDb())
+  }, [])
 
   const onChangeText = (text: string) => {
     setItem(text)
@@ -23,9 +26,7 @@ const TodoList = () => {
       const newItem = {
         item,
       }
-      // setItemList([...itemList, newItem])
       void dispatch(addTodoListDb(newItem))
-      console.log(itemListStage)
 
       setItem('')
     }

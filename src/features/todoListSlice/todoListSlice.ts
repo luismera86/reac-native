@@ -13,7 +13,6 @@ const todoListSlice = createSlice({
     setTodoList: (state, action: PayloadAction<ItemList>) => {
       state.push(action.payload)
     },
-    getTodoList: state => state,
     resetState: () => initialState,
   },
 })
@@ -34,8 +33,6 @@ export const addTodoListDb = (todoList: ItemList) => {
       })
       const data = await response.json()
       void dispatch(getTodoListDb())
-
-      console.log(data)
     } catch (error) {
       console.log(error)
     }
@@ -51,14 +48,19 @@ export const getTodoListDb = () => {
       },
     })
     const data = await response.json()
-    const list = Object.keys(data).map(keys => ({
-      id: keys,
-      ...data[keys],
-    }))
-    dispatch(resetState())
-    list.forEach(item => {
-      dispatch(setTodoList(item))
-    })
+    if (data !== null) {
+      const list = Object.keys(data).map(keys => ({
+        id: keys,
+        ...data[keys],
+      }))
+      dispatch(resetState())
+
+      list.forEach(item => {
+        dispatch(setTodoList(item))
+      })
+    } else {
+      dispatch(resetState())
+    }
   }
 }
 
@@ -72,8 +74,6 @@ export const deleteTodoListDb = (id: string) => {
         },
       })
       const data = await response.json()
-
-      console.log(data)
     } catch (error) {
       console.log(error)
     }
