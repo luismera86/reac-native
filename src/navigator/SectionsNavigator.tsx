@@ -41,7 +41,7 @@ const SectionsNavigator = () => {
           },
           headerTintColor: colors.primary,
           headerTitleStyle: {
-            fontWeight: 'bold',
+            fontFamily: 'Dyna-Bold',
           },
           title: 'Nueva Imagen',
           headerTitleAlign: 'center',
@@ -57,7 +57,7 @@ const SectionsNavigator = () => {
           },
           headerTintColor: colors.primary,
           headerTitleStyle: {
-            fontWeight: 'bold',
+            fontFamily: 'Dyna-Bold',
           },
           title: 'Detalle de Imagen',
           headerTitleAlign: 'center',
@@ -79,7 +79,7 @@ const SectionsNavigator = () => {
           },
           headerTintColor: colors.primary,
           headerTitleStyle: {
-            fontWeight: 'bold',
+            fontFamily: 'Dyna-Bold',
           },
           title: 'Album de Fotos',
           headerTitleAlign: 'center',
