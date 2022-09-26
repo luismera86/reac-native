@@ -50,7 +50,7 @@ const LoginScreen = ({ navigation }: Props) => {
         title='E-mail'
         value={email}
         onChangeText={onHandledUserMail}
-        placeholder='Ingrese apellido'
+        placeholder='Ingrese su e-mail'
         secureTextEntry={false}
       />
 
@@ -58,7 +58,7 @@ const LoginScreen = ({ navigation }: Props) => {
         title='Contraseña'
         value={password}
         onChangeText={onHandledUserPass}
-        placeholder='Ingrese apellido'
+        placeholder='Ingrese su contraseña'
         secureTextEntry={true}
       />
 
