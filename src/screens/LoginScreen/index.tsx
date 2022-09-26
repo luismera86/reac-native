@@ -32,6 +32,8 @@ const LoginScreen = ({ navigation }: Props) => {
     users.map(user => {
       if (user.email === email && user.password === password) {
         void dispatch(setUserAccess(true))
+      } else {
+        alert('Usuario o contraseña incorrectos')
       }
     })
   }

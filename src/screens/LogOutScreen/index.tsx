@@ -1,7 +1,7 @@
 import { Card, Header, SectionButton } from '../../components'
+import { Text, View } from 'react-native'
 
 import React from 'react'
-import { View } from 'react-native'
 import { setUserAccess } from '../../features/userAccessSlice/userAccessSlice'
 import { style } from './styles'
 import { useAppDispatch } from '../../app/hooks'
@@ -16,7 +16,8 @@ const LogOutScreen = () => {
     <View style={style.container}>
       <Header userName='' />
       <Card width={350}>
-        <SectionButton title='SALIR' onPress={logOut} />
+        <Text style={style.text}>Estas apunto de cerrar la session</Text>
+        <SectionButton title='CERRAR SESSION' onPress={logOut} />
       </Card>
     </View>
   )

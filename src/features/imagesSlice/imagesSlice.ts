@@ -44,7 +44,6 @@ export const loadImages = () => {
   return async (dispatch: AppDispatch) => {
     try {
       const result = await fetchImages()
-      console.log(result)
       dispatch(getImages(result.rows._array))
     } catch (error) {
       console.log(error)

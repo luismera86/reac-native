@@ -22,5 +22,11 @@ export const styles = StyleSheet.create({
     color: '#fff',
     fontFamily: 'Dyna-Regular',
     fontSize: 20
+  },
+  textTitle: {
+    color: colors.primary,
+    fontFamily: 'Dyna-Bold',
+    fontSize: 24,
+    marginBottom: 5,
   }
 })

@@ -27,7 +27,6 @@ export const insertImage = (image: string, title: string, description: string) =
         'INSERT INTO images (image, title, description) VALUES (?, ?, ?);',
         [image, title, description],
         (_, result) => {
-          console.warn(result)
           resolve(result)
         },
         (_, err) => {

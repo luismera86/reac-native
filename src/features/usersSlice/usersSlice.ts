@@ -25,10 +25,8 @@ export const { setUser, getUser } = usersSlice.actions
 // Thunks
 
 export const addUsersDb = (users: User) => {
-  console.log('entrando en addUser')
   return async (dispatch: AppDispatch) => {
     try {
-      console.log('por hacer el fetch')
       const response = await fetch(`${URL_API}/users.json`, {
         method: 'POST',
         headers: {

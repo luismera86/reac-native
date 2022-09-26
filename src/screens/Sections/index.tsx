@@ -8,7 +8,6 @@ import { style } from './styles'
 interface Props extends StackScreenProps<RootStackParamList> {}
 
 const Sections = ({ navigation }: Props) => {
-  const handleNavigateUserList = () => navigation.navigate('UserList')
   const handleNavigateImages = () => navigation.navigate('ImagesList')
   const handleNavigateAppList = () => navigation.navigate('AppList')
 
@@ -16,8 +15,7 @@ const Sections = ({ navigation }: Props) => {
     <View style={style.container}>
       <Header userName='' />
       <Card width={350}>
-        <SectionButton title='Lista de Usuarios' onPress={handleNavigateUserList} />
-        <SectionButton title='Imágenes' onPress={handleNavigateImages} />
+        <SectionButton title='Album de Fotos' onPress={handleNavigateImages} />
         <SectionButton title='TODO List' onPress={handleNavigateAppList} />
       </Card>
     </View>

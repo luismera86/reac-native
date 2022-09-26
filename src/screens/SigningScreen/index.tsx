@@ -17,20 +17,16 @@ const SigningScreen = ({ navigation }: Props) => {
     setUserFirstName,
     setUserLastName,
     setUserMail,
-    setUserName,
     setUserPassword,
-    setUserSignIn,
     userFirstName,
     userLastName,
     userMail,
     userName,
     userPassword,
-    userSignIn,
   } = useSignIn()
 
   const dispatch = useAppDispatch()
 
-  const onChangeUserName = (text: string) => setUserName(text)
   const onChangeUserFirsName = (text: string) => setUserFirstName(text)
   const onChangeUserLastName = (text: string) => setUserLastName(text)
   const onChangeUserMail = (text: string) => setUserMail(text)
@@ -47,8 +43,6 @@ const SigningScreen = ({ navigation }: Props) => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     dispatch(addUsersDb(newUser))
 
-    setUserSignIn(!userSignIn)
-    setUserName('')
     setUserFirstName('')
     setUserLastName('')
     setUserMail('')
@@ -57,13 +51,7 @@ const SigningScreen = ({ navigation }: Props) => {
   const onHandleReturn = () => navigation.navigate('Login')
   return (
     <View style={styles.container}>
-      <Text>REGISTRA UN USUARIO NUEVO</Text>
-      <LabelInputForm
-        title='USUARIO'
-        value={userName}
-        placeholder='Ingrese su nombre de usuario'
-        onChangeText={onChangeUserName}
-      />
+      <Text style={styles.textTitle}>REGISTRA UN USUARIO NUEVO</Text>
       <LabelInputForm
         title='NOMBRE'
         value={userFirstName}

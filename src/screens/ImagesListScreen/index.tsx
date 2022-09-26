@@ -17,7 +17,7 @@ const ImagesListScreen = ({ navigation }: Props) => {
   const dispatch = useAppDispatch()
   const images = useAppSelector(state => state.images)
   useEffect(() => {
-    dispatch(loadImages())
+    void dispatch(loadImages())
   }, [])
 
   const renderItem = ({ item }: itemsProps) => (
