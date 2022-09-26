@@ -1,7 +1,8 @@
+import { LogOutScreen, LoginScreen } from '../screens'
+
 import { FontAwesome } from '@expo/vector-icons'
 import React from 'react'
 import SectionsNavigator from './SectionsNavigator'
-import { SignIn } from '../screens'
 import { View } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
@@ -28,11 +29,11 @@ const Tabs = () => {
       />
       <BottomTab.Screen
         name='SignInTab'
-        component={SignIn}
+        component={LogOutScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <View>
-              <FontAwesome name='sign-in' size={26} color='#8D99AE' />
+              <FontAwesome name='sign-out' size={26} color='#8D99AE' />
             </View>
           ),
           tabBarShowLabel: false,

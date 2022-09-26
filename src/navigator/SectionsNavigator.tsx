@@ -8,7 +8,6 @@ import UserList from '../screens/UserList'
 import colors from '../constants/colors'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export type RootStackParamList = {
   sections: undefined
   UserList: undefined
@@ -24,12 +23,18 @@ const Stack = createNativeStackNavigator()
 const SectionsNavigator = () => {
   return (
     <Stack.Navigator initialRouteName='sections' screenOptions={{}}>
-      <Stack.Screen name='sections' component={Sections} />
+      <Stack.Screen name='sections' component={Sections} options={{
+        headerShown: false,
+      } } />
       <Stack.Screen name='UserList' component={UserList} />
       <Stack.Screen name='NewImage' component={NewImage} />
       <Stack.Screen name='Images' component={ImagesScreen} />
-      <Stack.Screen name='ImageDetails' component={ImageDetailsScreen} />
-      <Stack.Screen name='AppList' component={TodoListAppScreen} />
+      <Stack.Screen name='ImageDetails' component={ImageDetailsScreen} options={{
+        headerShown: false,
+      } }/>
+      <Stack.Screen name='AppList' component={TodoListAppScreen}options={{
+        headerShown: false,
+      } } />
       <Stack.Screen
         name='ImagesList'
         component={ImagesListScreen}

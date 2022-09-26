@@ -10,8 +10,8 @@ const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<User>) => {
-      state.push(action.payload)
+    setUser: (state, action: PayloadAction<User[]>) => {
+      return action.payload
     },
     getUser: state => {
       getUsers()
@@ -38,9 +38,6 @@ export const addUsersDb = (users: User) => {
       })
       const data = await response.json()
       void dispatch(getUsers())
-
-      console.log(data)
-      console.log('termino')
     } catch (error) {
       console.log(error)
     }
@@ -49,7 +46,6 @@ export const addUsersDb = (users: User) => {
 
 export const getUsers = () => {
   return async (dispatch: AppDispatch) => {
-    console.log('haciendo get user')
     const response = await fetch(`${URL_API}/users.json`, {
       method: 'GET',
       headers: {
@@ -61,7 +57,8 @@ export const getUsers = () => {
       ...data[keys],
       id: keys,
     }))
-    console.log(list)
+
+    dispatch(setUser(list))
   }
 }
 

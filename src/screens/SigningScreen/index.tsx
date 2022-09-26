@@ -2,13 +2,17 @@ import { Text, TouchableOpacity, View } from 'react-native'
 
 import { LabelInputForm } from '../../components'
 import React from 'react'
+import { RootStackParamList } from '../../navigator/UserNavigator'
+import { StackScreenProps } from '@react-navigation/stack'
 import { User } from '../../interfaces/User'
-import { addUsersDb } from '../../features/users/usersSlice'
+import { addUsersDb } from '../../features/usersSlice/usersSlice'
 import { styles } from './styles'
 import { useAppDispatch } from '../../app/hooks'
 import useSignIn from '../../hooks/useSignIn'
 
-const SignIn = () => {
+interface Props extends StackScreenProps<RootStackParamList> {}
+
+const SigningScreen = ({ navigation }: Props) => {
   const {
     setUserFirstName,
     setUserLastName,
@@ -23,7 +27,7 @@ const SignIn = () => {
     userPassword,
     userSignIn,
   } = useSignIn()
-  // const listUsers = useAppSelector(stack => stack.users)
+
   const dispatch = useAppDispatch()
 
   const onChangeUserName = (text: string) => setUserName(text)
@@ -50,10 +54,7 @@ const SignIn = () => {
     setUserMail('')
     setUserPassword('')
   }
-  const onHandleReturn = () => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    // dispatch(getUserDb())
-  }
+  const onHandleReturn = () => navigation.navigate('Login')
   return (
     <View style={styles.container}>
       <Text>REGISTRA UN USUARIO NUEVO</Text>
@@ -93,4 +94,4 @@ const SignIn = () => {
   )
 }
 
-export default SignIn
+export default SigningScreen
