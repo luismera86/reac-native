@@ -1,4 +1,4 @@
-import { ImageDetailsScreen, ImagesListScreen, ImagesScreen } from '../screens'
+import { ImageDetailsScreen, ImagesListScreen, ImagesScreen, MessagesBoardScreen } from '../screens'
 
 import { FontAwesome } from '@expo/vector-icons'
 import NewImageScreen from '../screens/NewImageScreen'
@@ -17,6 +17,7 @@ export type RootStackParamList = {
   ImageDetails: undefined
   ImagesList: undefined
   AppList: undefined
+  MessagesBoard: undefined
 }
 
 const Stack = createNativeStackNavigator()
@@ -88,6 +89,21 @@ const SectionsNavigator = () => {
             </TouchableOpacity>
           ),
         })}
+      />
+      <Stack.Screen
+        name='MessagesBoard'
+        component={MessagesBoardScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: colors.background,
+          },
+          headerTintColor: colors.primary,
+          headerTitleStyle: {
+            fontFamily: 'Dyna-Bold',
+          },
+          title: 'Tablero de Mensajes',
+          headerTitleAlign: 'center',
+        }}
       />
     </Stack.Navigator>
   )
