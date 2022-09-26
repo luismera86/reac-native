@@ -10,6 +10,7 @@ import { styles } from './styles'
 
 const TodoList = () => {
   const itemListStage: ItemList[] = useAppSelector(state => state.todoList)
+  const user = useAppSelector(state => state.userActive)
   const dispatch = useAppDispatch()
   const [item, setItem] = useState('')
 
@@ -26,7 +27,7 @@ const TodoList = () => {
       const newItem = {
         item,
       }
-      void dispatch(addTodoListDb(newItem))
+      void dispatch(addTodoListDb(newItem, user.id))
 
       setItem('')
     }

@@ -1,12 +1,12 @@
 import { Button, FlatList, Modal, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
+import { useAppDispatch, useAppSelector } from '../../../app/hooks'
 
 import { FontAwesome } from '@expo/vector-icons'
 import { ItemList } from '../../../interfaces/ItemList'
 import colors from '../../../constants/colors'
 import { deleteTodoListDb } from '../../../features/todoListSlice/todoListSlice'
 import { styles } from './styles'
-import { useAppDispatch } from '../../../app/hooks'
 
 interface Props {
   itemList: ItemList[]
@@ -19,7 +19,10 @@ interface Item {
 }
 
 const List = ({ itemList }: Props) => {
+  const user = useAppSelector(state => state.userActive)
   const dispatch = useAppDispatch()
+  // Filtra las tareas exclusivamente del usuario activo
+  const listRender = itemList.filter(item => item.userId === user.id)
 
   const [modalVisibility, setModalVisibility] = useState(false)
   const [itemSelected, setItemSelected] = useState<ItemList>({
@@ -35,8 +38,8 @@ const List = ({ itemList }: Props) => {
   }
 
   const onHandledDelete = (id: string) => {
+    console.log(id)
     void dispatch(deleteTodoListDb(id))
-
     setItemSelected({ id: '', item: '' })
     setModalVisibility(!modalVisibility)
   }
@@ -52,7 +55,7 @@ const List = ({ itemList }: Props) => {
 
   return (
     <View style={styles.container}>
-      <FlatList data={itemList} renderItem={renderItem} keyExtractor={item => item.id} />
+      <FlatList data={listRender} renderItem={renderItem} keyExtractor={item => item.id} />
       <Modal animationType='slide' visible={modalVisibility}>
         <View style={styles.modalContainer}>
           <Text style={styles.waring}>!</Text>

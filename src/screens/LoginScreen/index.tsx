@@ -29,7 +29,7 @@ const LoginScreen = ({ navigation }: Props) => {
   const onHandledUserAccess = () => {
     userCheck(email, password)
   }
-  // TODO: Ver por que me da siempre
+
   const userCheck = (email: string, password: string) => {
     users.find(user => {
       if (user.email === email && user.password === password) {
