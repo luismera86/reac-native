@@ -9,6 +9,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import { View } from 'react-native'
 import { getUsers } from '../../features/usersSlice/usersSlice'
 import { setUserAccess } from '../../features/userAccessSlice/userAccessSlice'
+import { setUserActive } from '../../features/userActiveSlice/userActiveSlice'
 import { style } from './styles'
 
 interface Props extends StackScreenProps<RootStackParamList> {}
@@ -36,6 +37,8 @@ const LoginScreen = ({ navigation }: Props) => {
         alert('Usuario o contraseña incorrectos')
       }
     })
+    const userLogged = users.find(user => user.email === email && user.password === password)
+    void dispatch(setUserActive(userLogged))
   }
 
   const onHandleUserRegister = () => navigation.navigate('Signing')
