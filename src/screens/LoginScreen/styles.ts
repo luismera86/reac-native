@@ -6,14 +6,13 @@ export const style = StyleSheet.create({
     height: '100%',
     backgroundColor: colors.background,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   textLabel: {
     marginTop: 10,
     fontSize: 20,
     fontFamily: 'Dyna-Medium',
-    color: colors.primary
-
+    color: colors.primary,
   },
   input: {
     width: '80%',
@@ -26,12 +25,12 @@ export const style = StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 3
+      height: 3,
     },
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
 
-    elevation: 4
+    elevation: 4,
   },
   enterButton: {
     backgroundColor: colors.secondary,
@@ -41,11 +40,17 @@ export const style = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
-    elevation: 6
+    elevation: 6,
   },
   textButton: {
     color: '#fff',
     fontFamily: 'Dyna-Regular',
-    fontSize: 20
-  }
+    fontSize: 20,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.background,
+  },
 })

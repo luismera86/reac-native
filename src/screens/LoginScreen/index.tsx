@@ -1,12 +1,12 @@
 /* eslint-disable array-callback-return */
 
 import { LabelInputForm, SectionButton } from '../../components'
+import { Modal, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 
 import { RootStackParamList } from '../../navigator/UserNavigator'
 import { StackScreenProps } from '@react-navigation/stack'
-import { View } from 'react-native'
 import { getUsers } from '../../features/usersSlice/usersSlice'
 import { setUserAccess } from '../../features/userAccessSlice/userAccessSlice'
 import { setUserActive } from '../../features/userActiveSlice/userActiveSlice'
@@ -20,6 +20,7 @@ const LoginScreen = ({ navigation }: Props) => {
   void dispatch(getUsers())
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const [modalVisible, setModalVisible] = useState<boolean>(false)
 
   const onHandledUserMail = (text: string) => setEmail(text)
 
@@ -28,13 +29,13 @@ const LoginScreen = ({ navigation }: Props) => {
   const onHandledUserAccess = () => {
     userCheck(email, password)
   }
-
+  // TODO: Ver por que me da siempre
   const userCheck = (email: string, password: string) => {
-    users.map(user => {
+    users.find(user => {
       if (user.email === email && user.password === password) {
         void dispatch(setUserAccess(true))
       } else {
-        alert('Usuario o contraseña incorrectos')
+        setModalVisible(true)
       }
     })
     const userLogged = users.find(user => user.email === email && user.password === password)
@@ -63,6 +64,13 @@ const LoginScreen = ({ navigation }: Props) => {
 
       <SectionButton title='ENTRAR' onPress={onHandledUserAccess} />
       <SectionButton title='REGISTRARSE' onPress={onHandleUserRegister} />
+
+      <Modal visible={modalVisible} animationType='slide'>
+        <View style={style.modalContainer}>
+          <Text style={style.textLabel}>Usuario o contraseña incorrectos</Text>
+          <SectionButton title='Cerrar' onPress={() => setModalVisible(false)} />
+        </View>
+      </Modal>
     </View>
   )
 }
