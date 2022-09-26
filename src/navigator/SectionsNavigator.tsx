@@ -1,7 +1,9 @@
-import { ImageDetailsScreen, ImagesListScreen, ImagesScreen, NewImage, Sections } from '../screens'
+import { ImageDetailsScreen, ImagesListScreen, ImagesScreen } from '../screens'
 
 import { FontAwesome } from '@expo/vector-icons'
+import NewImageScreen from '../screens/NewImageScreen'
 import React from 'react'
+import SectionsScreen from '../screens/SectionsScreen'
 import TodoListAppScreen from '../screens/TodoListAppScreen'
 import { TouchableOpacity } from 'react-native'
 import colors from '../constants/colors'
@@ -24,22 +26,26 @@ const SectionsNavigator = () => {
     <Stack.Navigator initialRouteName='sections' screenOptions={{}}>
       <Stack.Screen
         name='sections'
-        component={Sections}
+        component={SectionsScreen}
         options={{
           headerShown: false,
         }}
       />
-      <Stack.Screen name='NewImage' component={NewImage} options={{
-        headerStyle: {
-          backgroundColor: colors.background,
-        },
-        headerTintColor: colors.primary,
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-        title: 'Nueva Imagen',
-        headerTitleAlign: 'center',
-      }} />
+      <Stack.Screen
+        name='NewImage'
+        component={NewImageScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: colors.background,
+          },
+          headerTintColor: colors.primary,
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+          title: 'Nueva Imagen',
+          headerTitleAlign: 'center',
+        }}
+      />
       <Stack.Screen name='Images' component={ImagesScreen} />
       <Stack.Screen
         name='ImageDetails'

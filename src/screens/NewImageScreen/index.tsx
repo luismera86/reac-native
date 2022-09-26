@@ -12,7 +12,7 @@ import { useAppDispatch } from '../../app/hooks'
 
 interface Props extends StackScreenProps<RootStackParamList> {}
 
-const NewImage = ({ navigation }: Props) => {
+const NewImageScreen = ({ navigation }: Props) => {
   const dispatch = useAppDispatch()
 
   const [title, setTitle] = React.useState('')
@@ -47,4 +47,4 @@ const NewImage = ({ navigation }: Props) => {
   )
 }
 
-export default NewImage
+export default NewImageScreen

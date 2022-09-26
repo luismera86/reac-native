@@ -7,7 +7,7 @@ import { style } from './styles'
 
 interface Props extends StackScreenProps<RootStackParamList> {}
 
-const Sections = ({ navigation }: Props) => {
+const SectionsScreen = ({ navigation }: Props) => {
   const handleNavigateImages = () => navigation.navigate('ImagesList')
   const handleNavigateAppList = () => navigation.navigate('AppList')
 
@@ -21,4 +21,4 @@ const Sections = ({ navigation }: Props) => {
     </View>
   )
 }
-export default Sections
+export default SectionsScreen
