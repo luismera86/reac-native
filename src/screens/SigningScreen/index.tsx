@@ -21,7 +21,6 @@ const SigningScreen = ({ navigation }: Props) => {
     userFirstName,
     userLastName,
     userMail,
-    userName,
     userPassword,
   } = useSignIn()
 
@@ -33,15 +32,13 @@ const SigningScreen = ({ navigation }: Props) => {
   const onChangeUserPassword = (text: string) => setUserPassword(text)
   const onHandleSaveButton = () => {
     const newUser: User = {
-      username: userName,
       firstname: userFirstName,
       lastname: userLastName,
       email: userMail,
       password: userPassword,
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    dispatch(addUsersDb(newUser))
+    void dispatch(addUsersDb(newUser))
 
     setUserFirstName('')
     setUserLastName('')

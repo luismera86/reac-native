@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
+
 import { FlexAlignType, StyleSheet, View } from 'react-native'
 
 import React from 'react'
